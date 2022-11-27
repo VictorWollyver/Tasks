@@ -2,7 +2,7 @@
 
 Um projeto no estilo TO-DO para anotar suas tarefas do dia a dia e organizar a sua rotina, se tornando mais produtivo.
 
-![Logo](./assets\tasksLogo.svg)
+![Logo](./assets/tasksLogo.svg)
 
 ## Lessons Learned
 
