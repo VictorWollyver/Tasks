@@ -1,22 +1,39 @@
 import React from 'react'
-import ListTasksStyle from './TasksList.styled'
+import TableTasks from './TableTasks.styled'
 import TaskItem from '../TasksList/TaskItem'
+import {TaskContext, TaskContextType } from '../../context/TaskContext'
 
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  setModalTaskDetails: Function;
+interface ITasksListProps {
+  setModalTaskDetails: React.Dispatch<React.SetStateAction<Task | false>>;
+  filter: 'Progressing' | 'None' | 'Completed'
 }
 
-const TasksList = ({ tasks, setModalTaskDetails }: Task[]) => {
-  
-  
-  if(tasks)
+const TasksList = ({ setModalTaskDetails, filter }: ITasksListProps) => {
+  const { getTasks, tasks} = React.useContext(TaskContext) as TaskContextType
+  let tasksFiltred
+
+  if (filter == 'Completed') {
+    tasksFiltred = tasks.filter(({ status }) => status == true )
+  } else if(filter == 'Progressing') {
+    tasksFiltred = tasks.filter(({ status }) => status == false )
+  } else {
+    tasksFiltred = tasks
+  }
+
+  React.useEffect(() => {
+    getTasks()
+  }, [getTasks])
+
+  if(tasksFiltred)
     return (
-      <ListTasksStyle>
-        {tasks.map(({id, title, description}) => <TaskItem key={id} title={title} description={description} setModalTaskDetails={setModalTaskDetails} /> )}
-      </ListTasksStyle>
+      <TableTasks>
+        <tr>
+          <th>Name</th>
+          <th className='description-title'>Description</th>
+          <th>Status</th>
+        </tr>
+        {tasksFiltred.map((task, index) => <TaskItem task={{...task, index}} key={index} setModalTaskDetails={setModalTaskDetails} /> )}
+      </TableTasks>
     )
   else return <div>Sem tasks</div>
 }

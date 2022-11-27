@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tasks - manage your tasks and complete your goals
 
-## Getting Started
+Um projeto no estilo TO-DO para anotar suas tarefas do dia a dia e organizar a sua rotina, se tornando mais produtivo.
 
-First, run the development server:
+![Logo](./assets\tasksLogo.svg)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Lessons Learned
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Esse é definitivamente o meu maior projeto já realizado e sem duvidas o com mais aprendizado durante o desenvolvimento.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Feito totalmente do ZERO por mim, desde a parte do "FrontEnd", "BackEnd" & "Design".
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 🛠 Skills Used
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### FrontEnd | ReactJS, NextJS, TypeScript, StyledComponents, React-Hook-Form, Axios.
 
-## Learn More
+#### BackEnd | NodeJS, ExpressJS, MongoDB, TypeScript, JWT.
 
-To learn more about Next.js, take a look at the following resources:
+#### Design | Figma.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Screenshots
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![App Screenshot](./assets/tasksProject.PNG)
 
-## Deploy on Vercel
+## 🔗 Links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-wollyver-03b065215/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🚀 About Me
+
+Me chamo Victor, tenho 18 anos e sou Desenvolvedor FullStack ReactJS, NodeJS e UI Designer

@@ -2,24 +2,19 @@
 import React from 'react'
 
 interface TaskItemProps {
-  id: number
-  title: string;
-  description: string;
-  setModalTaskDetails: Function
+  task: Task
+  setModalTaskDetails: React.Dispatch<React.SetStateAction<Task | false>>
 
 }
 
-const TaskItem = ({ title, description, setModalTaskDetails}: TaskItemProps ) => {
-  const task = {
-    title,
-    description
-  }
+const TaskItem = ({ task, setModalTaskDetails }: TaskItemProps ) => {
+
   return (
-    <li onClick={() => setModalTaskDetails(task)}>
-      <h2>{title}</h2>
-      <p>teste</p>
-      <p>{description}</p>
-    </li>
+    <tr onClick={() => setModalTaskDetails(task)}>
+      <td>{task.name}</td>
+      <td className='description'>{task.description.substring(0, 15) + '...'}</td>
+      { task.status? <td style={{ color: 'green'}}>Completed</td> : <td style={{ color: 'red'}}>Progressing</td> }
+    </tr>
   )
 }
 

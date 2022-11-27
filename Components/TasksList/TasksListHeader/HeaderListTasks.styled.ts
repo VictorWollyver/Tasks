@@ -5,6 +5,7 @@ const HeaderListStyles = styled.header`
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     padding: 0 20px;
+    
 `
 
 export default HeaderListStyles

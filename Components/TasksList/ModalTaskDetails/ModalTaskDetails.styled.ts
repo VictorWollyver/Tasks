@@ -17,7 +17,7 @@ const BgModal = styled.article`
   .modal {
     background-color: #fff;
     border-radius: 10px;
-    width: 600px;
+    width: auto;
     padding: 2rem;
     animation: ${showModalForm} .5s forwards;
 
@@ -29,6 +29,7 @@ const BgModal = styled.article`
       }
       h1 {
         font-size: 3rem;
+        line-height: 1;
       }
       span {
         background-color: rgba(255,0,0,20%) ;
@@ -36,9 +37,11 @@ const BgModal = styled.article`
         color: #ff0000 ;
         border-radius: 10px;
         display: grid;
-        place-content: center;
         cursor: pointer;
-        
+      }
+
+      .created-data {
+        margin-top: 1rem;
       }
     }
 
@@ -48,51 +51,44 @@ const BgModal = styled.article`
       margin-top: -10px;
     }
 
-    form {
-      margin-top: 2rem;
+    .description {
+      margin: 1.5rem 0;
+      
+      p {
+        font-size: 1rem;
+      }
 
-      label {
-        display: block;
-        font-weight: 500;
+      h2 {
         font-size: 1.5rem;
-      }
-
-      input {
-        padding: 2rem;
-        border-radius: 10px;
-        outline: none;
-        width: 100%;
-        background-color: #f5f5f5 ;
-        border: 1px solid #ddd;
-        font-size: 1.3rem;
-      }
-
-      .delete {
-        width: 5rem;
-        padding: 8px 16px;
-        border-radius: 10px;
-        background-color: rgba(255,0,0,20%) ;
-        border: 1px solid #ff0000;
-        color: #ff0000 ;
-        margin-right: 1rem;
-        margin-top: 1rem;
-        cursor: pointer;
-        
-      }
-
-      .update {
-        width: 5rem;
-        padding: 8px 16px;
-        border-radius: 10px;
-        background-color: rgba(0,255,0,20%) ;
-        border: 1px solid #00ff00;
-        color: #00ff00 ;
-        margin-left: 1rem;
-        margin-top: 1rem;
-        cursor: pointer;
+        font-weight: 400;
       }
     }
 
+    .error {
+      font-size: .8rem;
+      color: red;
+      margin-top: 20px;
+    }
+
+    .delete {
+      /* width: 5rem; */
+      padding: 8px 16px;
+      border-radius: 10px;
+      background-color: rgba(255,0,0,20%) ;
+      border: 1px solid #ff0000;
+      color: #ff0000 ;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+  
+  .update {
+    padding: 8px 16px;
+    border-radius: 10px;
+    background-color: lime ;
+    border: 1px solid green;
+    color: green ;
+    cursor: pointer;
+  }
   }
 `
 

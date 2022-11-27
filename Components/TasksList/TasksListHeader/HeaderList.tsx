@@ -5,8 +5,8 @@ const HeaderList = () => {
   return (
     <HeaderListStyles>
       <span>TASK NAME</span>
-      <span>CREATED DATA</span>
-      <span>DESCRIPTION TASK</span>
+      <span>DESCRIPTION</span>
+      <span>STATUS</span>
     </HeaderListStyles>
   )
 }

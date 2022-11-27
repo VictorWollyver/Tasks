@@ -1,55 +1,44 @@
 import React from 'react'
+import { useRouter } from 'next/router'
+import Image from 'next/image'
+import ImageFilter from '../../assets/filter_alt_FILL1_wght400_GRAD0_opsz48.svg'
+
 import HeaderDashboard from '../../Components/HeaderDashboard/HeaderDashboard'
-import HeaderList from '../../Components/TasksList/TasksListHeader/HeaderList'
 import TasksList from '../../Components/TasksList/TasksList'
 import ModalAddTask from '../../Components/ModalAddTask/ModalAddTask'
-import ModalAlert from '../../Components/ModalAlertAddTask/ModalAlertAddTask'
 import Container from '../../styles/Container.styled'
-import { useRouter } from 'next/router'
 import ModalTaskDetails from '../../Components/TasksList/ModalTaskDetails/ModalTaskDetails'
+import TaskContext, { TaskContextType } from '../../context/TaskContext'
 
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-}
+type Filters = 'Progressing' | 'None' | 'Completed';
 
 const Tasks = () => {
+  const { tasks } = React.useContext(TaskContext) as TaskContextType
   const [modal, setModal] = React.useState(false);
-  const [modalAlert, setModalAlert] = React.useState(false)
-  const [modalTaskDetails, setModalTaskDetails] = React.useState(null)
-  const [tasks, setTasks] = React.useState<Task[]>([])
-  const { query: { username }} = useRouter()
+  const [menuFilter, setMenuFilter] = React.useState(false)
+  const [filter, setFilter] = React.useState<Filters>('None')
+  const [modalTaskDetails, setModalTaskDetails] = React.useState<Task | false>(false)
+  const router = useRouter()
+  const username = router.query.username
 
-
-  React.useEffect(() => {
-
-    async function getTasks() {
-      const response = await fetch('http://localhost:3000/tasks')
-      const json = await response.json()
-
-      setTasks(json)
-    }
-
-    getTasks()
-  }, [])
-
-  function activeModalAlert() {
-    setModalAlert(true)
-    setTimeout(() => {
-      setModalAlert(false)
-    }, 3000)
+  function activeFilter(filter: Filters) {
+    setFilter(filter)
+    setMenuFilter(false)
   }
-
+ 
   return (
-      <Container>
-        {modal && <ModalAddTask setModal={setModal} activeModalAlert={activeModalAlert} setTasks={setTasks} />}
-        {modalAlert && <ModalAlert />}
-        {modalTaskDetails && <ModalTaskDetails modalTaskDetails={modalTaskDetails} setModalTaskDetails={setModalTaskDetails} />}
-        <HeaderDashboard username={username} setModal={setModal} length={tasks.length} />
+      <Container active={menuFilter}>
+        {modal && <ModalAddTask setModal={setModal} />}
+        {modalTaskDetails && <ModalTaskDetails setModalTaskDetails={setModalTaskDetails} modalTaskDetails={modalTaskDetails} />}
+        <HeaderDashboard username={username} setModal={setModal} length={tasks ? tasks.length : 0} />
         <div className='containerList'>
-          <HeaderList />
-          <TasksList tasks={tasks} setModalTaskDetails={setModalTaskDetails}  />
+          <button onClick={() => setMenuFilter(!menuFilter)}><Image src={ImageFilter} width='20px' height='20px'  alt='SVG filter'></Image>Filter</button>
+          <ul>
+            <li onClick={() => activeFilter('None')}>None</li>
+            <li onClick={() => activeFilter('Completed')}>Completed</li>
+            <li onClick={() => activeFilter('Progressing')}>Progressing</li>
+          </ul>
+          <TasksList setModalTaskDetails={setModalTaskDetails} filter={filter}  />
         </div>
       </Container>
   )
